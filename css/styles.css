@@ -332,15 +332,18 @@ h2 {
     text-transform: capitalize;
 }
 
-.button {
+button {
     display: block;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.button {
     min-width: 169px;
     height: 56px;
-    border: none;
     color: var(--white);
     background-color: var(--button-color);
-    border-radius: 4px;
-    cursor: pointer;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
@@ -477,8 +480,12 @@ h2 {
   transform: translateY(0%);
 }
 
-.footer-subscribe {
+input {
+    border-radius: 4px;
+    outline: none;
+}
 
+.footer-subscribe {
 }
 
 .subscribe-title {
@@ -501,14 +508,15 @@ h2 {
     height: 40px;
     padding: 8px 16px;
     background-color: inherit;
-    border-radius: 4px;
     border-color: var(--white);
     color: var(--white);
+    transition: border-color var(--transition-settings), color var(--transition-settings);
 }
 
 .subscribe-input::placeholder {
     color: var(--white);
     opacity: 1;
+    transition: color var(--transition-settings), opacity var(--transition-settings);
 }
 
 .subscribe-input:hover,
@@ -527,12 +535,10 @@ h2 {
 }
 
 .subscribe-button {
-    border: none;
     max-width: 165px;
     height: 40px;
     background-color: var(--iris);
     color: var(--white);
-    border-radius: 4px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -540,6 +546,7 @@ h2 {
     align-items: center;
     padding-top: 8px;
     padding: 8px 24px;
+    transition: background-color var(--transition-settings);
 }
 
 .subscribe-button:hover,
@@ -550,4 +557,166 @@ h2 {
 .subscribe-icon {
     fill: var(--white);
     margin-left: 16px;
+}
+
+.modal-overlay {
+    background-color: rgba(46, 47, 66, 0.4);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-settings);
+}
+
+.modal-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal {
+    border-radius: 4px;
+    max-width: 408px;
+    max-height: 584px;
+    overflow-y: auto;
+    background-color: var(--dairy);
+    padding: 24px;
+    margin-top: 80px;
+}
+
+.modal-close-button {
+    display: block;
+    margin: 0px 0px 24px auto;
+    width: 24px;
+    height: 24px;
+    background-color: var(--cornflower);
+    border: var(--navy-blue-modal) 1px solid;
+    border-radius: 50%;
+    transition: background-color var(--transition-settings), border-color var(--transition-settings);
+}
+
+.modal-close-button:hover,
+.modal-close-button:focus {
+    background-color: var(--ocean);
+}
+
+.modal-close-icon {
+    fill: var(--navy-blue);
+    transition: fill var(--transition-settings);
+}
+
+.modal-close-button:hover .modal-close-icon,
+.modal-close-button:focus .modal-close-icon {
+    fill: var(--white);
+}
+
+.modal-title {
+    color: var(--navy-blue);
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.modal-form {
+    accent-color: var(--ocean);
+}
+
+.modal-form-field {
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.modal-label {
+    color: var(--light-slate);
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.modal-input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    fill: var(--light-slate);
+    pointer-events: none;
+    transition: fill var(--transition-settings);
+}
+
+.modal-input {
+    width: 100%;
+    display: block;
+    outline: none;
+    border-color: var(--light-slate);
+    border-width: 1px;
+    border-style: solid;
+    min-height: 40px;
+    padding: 8px 16px;
+    padding-left: 38px; /* Space for the icon */
+    background-color: transparent;
+    color: var(--light-slate);
+    font-size: 12px;
+    line-height: 14px;
+    transition: color var(--transition-settings), border-color var(--transition-settings);
+}
+
+.modal-input:focus,
+.modal-input:focus-within {
+    color: var(--iris);
+    border-color: var(--iris);
+}
+
+.modal-input:focus + .modal-input-icon,
+.modal-input:focus-within + .modal-input-icon {
+    fill: var(--iris);
+}
+
+.modal-input.comment {
+    min-height: 216px;
+    vertical-align: top;
+    resize: vertical;
+    padding-left: 16px; /* no space for the icon needed*/
+}
+
+.modal-input::placeholder {
+    color: var(--light-slate);
+}
+
+input[type="text"]::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+}
+
+.modal-checkbox {
+    margin-top: 16px;
+    accent-color: var(--ocean);
+}
+
+.modal-consent {
+    display: inline;
+    color: var(--light-slate);
+}
+
+.modal-send-button {
+    display: block;
+    margin: 24px auto 0px auto;
+    width: 169px;
+    height: 56px;
+    background-color: var(--iris);
+    color: var(--white);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+}
+
+.modal-send-button:hover,
+.modal-send-button:focus {
+    background-color: var(--ocean);
 }
