@@ -678,6 +678,7 @@ input, textarea {
     transform: translateY(-50%);
     fill: var(--light-slate);
     pointer-events: none;
+    transition: fill var(--transition-settings);
 }
 
 .modal-input {
